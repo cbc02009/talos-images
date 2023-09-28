@@ -1,0 +1,40 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "github>cbc02009/renovate-config",
+        "github>cbc02009/renovate-config:automerge-github-actions.json5"
+    ],
+    "platform": "github",
+    "username": "mahoro-bot[bot]",
+    "gitAuthor": "mahoro-bot <115426318+mahoro-bot[bot]@users.noreply.github.com>",
+    "repositories": ["cbc02009/talos-images"],
+    "major": {
+      "dependencyDashboardApproval": true
+    },
+    "packageRules": [
+      {
+        "description": "Group updates into single PR",
+        "matchFileNames": [".github/workflows/talos-images.yaml"],
+        "groupName": "Talos boot assets"
+      },
+      {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["ghcr.io/siderolabs/intel-ucode"],
+        "versioning": "regex:^(?<major>\\d{4})(?<minor>\\d{2})(?<patch>\\d{2})\\.?(?<build>\\d+)?$"
+      },
+      {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["ghcr.io/siderolabs/amd-ucode"],
+        "versioning": "regex:^(?<major>\\d{4})(?<minor>\\d{2})(?<patch>\\d{2})\\.?(?<build>\\d+)?$"
+      }
+    ],
+    "regexManagers": [
+      {
+        "fileMatch": [ "^.github/workflows/.+\\.ya?ml$" ],
+        "matchStrings": [
+            "#\\s?renovate: ?\\s+depName=(?<depName>.+?)?\\s(?:.*_(?:version|VERSION):\\s+(?<currentValue>.*))"
+        ],
+        "datasourceTemplate": "docker"
+      }
+    ]
+  }

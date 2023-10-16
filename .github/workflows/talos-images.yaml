@@ -168,5 +168,5 @@ jobs:
       - uses: imjasonh/setup-crane@v0.3
       - name: Crane push installer
         run: |
-          crane push --platform amd64 /tmp/talos-build-assets/metal-amd64-installer.tar ${{ env.REGISTRY }}/cbc02009/installer:${{ needs.check-releases.outputs.talosReleaseTag }}
-          crane push --platform amd64 /tmp/talos-build-assets/metal-amd64-installer-nvidia.tar ${{ env.REGISTRY }}/cbc02009/installer-nvidia:${{ needs.check-releases.outputs.talosReleaseTag }}
+          crane push --platform amd64 /tmp/talos-build-assets/talos-installer/metal-amd64-installer.tar ${{ env.REGISTRY }}/cbc02009/installer:${{ needs.check-releases.outputs.talosReleaseTag }}
+          crane push --platform amd64 /tmp/talos-build-assets/talos-installer-nvidia/metal-amd64-installer-nvidia.tar ${{ env.REGISTRY }}/cbc02009/installer-nvidia:${{ needs.check-releases.outputs.talosReleaseTag }}

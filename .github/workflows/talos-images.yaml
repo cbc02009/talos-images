@@ -131,7 +131,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: talos-iso-nvidia
-          path: /out/metal-amd64.iso
+          path: /out/metal-amd64-nvidia.iso
           if-no-files-found: error
           retention-days: 1
 

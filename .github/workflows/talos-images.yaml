@@ -123,7 +123,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: talos-installer-nvidia
-          path: /out/metal-amd64-installer.tar
+          path: /out/metal-amd64-installer-nvidia.tar
           if-no-files-found: error
           retention-days: 1
 
@@ -145,8 +145,11 @@ jobs:
       - name: Download build asset images
         uses: actions/download-artifact@v3
         with:
-          name: talos-installer
           path: /tmp/talos-build-assets
+      
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: /tmp/talos-build-assets
 
       - name: Set up Docker Buildx
         id: buildx
